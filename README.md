@@ -19,7 +19,7 @@
 #### 仪器信息+转发
 交互一：从仪器分类点击进入厂商展厅</br>
 交互二：转发厂商信息</br>
-交互三：直接拨打电话
+交互三：直接拨打电话</br>
 ![首页](https://github.com/lj723911/bioequip-wx/blob/master/screenshot/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_201712311648474.png?raw=true)
 ![讲座](https://github.com/lj723911/bioequip-wx/blob/master/screenshot/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_201712311648475.png?raw=true)
 
