@@ -1,0 +1,16 @@
+<!--pages/article/index.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class='articleBody' style='height:{{viewHeight}}px'>
+  <view class="articlePic" style='background-image:url({{articleImg}})'></view>
+  <view class='articleTitle'>{{articleTitle}}</view>
+  <view class="articlecontent" >
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>
+
+<!--底部栏  -->
+<view class="footer">
+   <view class="{{saveClass=='1'?'save':'unsave'}}" bindtap='chooseSave'>收藏</view>
+   <navigator url="../manufacture/index?brand={{manuId}}"class="manuinfo">厂商</navigator>
+   <view class="mkphone" bindtap='calling'>电话</view>
+</view>

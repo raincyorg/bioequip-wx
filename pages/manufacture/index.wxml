@@ -1,0 +1,66 @@
+<!--pages/manufacture/index.wxml-->
+<!--头部-->
+<view class="manuheader">
+  <image src="{{manuUrl}}" mode="widthFix"></image>
+  <text class="manuName">{{manuName}}</text>
+</view>
+<!--导航-->
+<view class="manuNavbar">
+    <view class="{{curIndex == index?'manunavBtn active':'manunavBtn'}}" wx:for="{{manuNav}}" data-index="{{index}}" bindtap='chooseTitle'>{{item}}</view>
+</view>
+<!-- 内容 -->
+<view class='ctx_frame' style='height:{{viewHeight}}px'>
+    <scroll-view scroll-y="true" class="textList" style="height:100%">
+       <block wx:if="{{curIndex ==1}}" wx:for="{{shownlist}}"> 
+        <navigator url="../article/index?brand={{item.id}}" class="gtlink">
+          <image src='{{item.img_url}}'></image>
+          <text class= "ad_title">{{item.title}}</text>
+          <text class="ad_date">促销截止日期：{{item.date}}</text>
+        </navigator>
+      </block>
+      <block wx:if="{{curIndex ==2}}" wx:for="{{shownlist}}"> 
+        <navigator url="../article/index?brand={{item.id}}" class="gtlink">
+          <image src='{{item.img_url}}'></image>
+          <text class= "ad_title">{{item.title}}</text>
+          <text class="ad_date">研讨会日期：{{item.date}}</text>
+        </navigator>
+      </block>
+      <block wx:if="{{curIndex ==0}}" wx:for="{{shownlist}}"> 
+        <navigator url="../details/index?brand={{item.id}}" class="mdlink">
+          <image src='{{item.img_url}}' ></image>
+          <text class="ad_title">{{item.title}}</text>
+        </navigator>
+      </block>
+      <block wx:if="{{curIndex == 3}}" wx:for="{{shownlist}}">
+        <navigator url="../article/index?brand={{item.id}}" class="ltlink">
+          <text class= "ep_position">诚聘：{{item.position}}</text>
+          <text class= "ep_company">招聘公司：{{item.company}}</text>
+          <text class="ep_num">招聘人数：{{item.num}} 人</text>
+          <text class ="ep_area">工作地点：{{item.area}}</text>
+          <text class="ep_date">发布日期：{{item.date}}</text>
+        </navigator>
+      </block>
+      <block wx:if="{{curIndex == 4 }}" wx:for="{{shownlist}}">
+        <navigator url="../manufacture/index?brand={{item.id}}" class="ltlink">
+          <text class= "ad_title">{{item.title}}</text>
+        </navigator>
+      </block>
+    </scroll-view>  
+  </view>
+
+<!--底部栏  -->
+<view class="footer">
+   <view class="manupdClassify" bindtap='showCategory'>产品分类</view>
+   <view class="manuinfo" bindtap='showManuInfo'>厂商介绍</view>
+   <view class="mkphone" bindtap='calling'>电话联系</view>
+</view>
+
+<!--分类面板  -->
+<view class="category" wx:if="{{showCategory==1}}">
+   <view wx:for="{{prudCategory}}" bindtap='chooseCategory' data-id='{{item.id}}'>{{item.name}}</view>
+</view>
+<!--厂商介绍  -->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class='introduction' wx:if="{{showManuInfo==1}}">
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>

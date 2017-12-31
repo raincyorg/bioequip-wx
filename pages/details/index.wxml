@@ -1,0 +1,37 @@
+<!--pages/details/index.wxml-->
+<!--主面板  -->
+<scroll-view class="mainpdPanel">
+  <!--滚动图  -->
+  <swiper indicator-dots="true" autoplay="true" interval="4000" duration="1000">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item  style="background:url({{item}});background-repeat:no-repeat;background-size:100% 200px;">
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!--标题栏  -->
+  <view class="titlePanel">
+     <text class='pdtitle'>{{pdTitle}}</text>
+     <text class='pdtype'>型号：{{pdType}}</text>
+     <text class='pdbrand'>品牌：{{pdBrand}}</text>
+     <text class='pdorg'>原产地：{{pdOrg}}</text>
+     <text class='pdmanu'>经销商：{{pdManu}}</text>
+  </view>
+
+  <!--详情栏  -->
+  <view class="pruDetail">
+     <view class='pdcheckbar'>
+       <view class="parambtn">产品参数</view>
+       <view class='detailbtn'>仪器详情</view>
+     </view>
+     <rich-text class='params'></rich-text>
+     <rich-text class='pddetial'></rich-text>
+  </view>
+</scroll-view>
+
+<!--底部栏  -->
+<view class="footer">
+   <view class="{{saveClass=='1'?'save':'unsave'}}" bindtap='chooseSave'>收藏</view>
+   <navigator url="../manufacture/index?brand={{item.id}}"class="manuinfo">厂商</navigator>
+   <view class="mkphone" bindtap='calling'>电话</view>
+</view>

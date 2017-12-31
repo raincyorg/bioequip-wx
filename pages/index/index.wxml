@@ -1,0 +1,56 @@
+<!--index.wxml-->
+  <scroll-view class='mask' bindtouchstart="touchStart" bindtouchmove="touchMove" wx:if="{{showpanel}}"></scroll-view>
+  <scroll-view class="search-container" bindtouchstart="touchStart" bindtouchmove="touchMove" >
+  <view id="movable" style="{{logoStyle}}">
+    <view class="fx" wx:if="{{showpanel}}">
+      <image src="../../images/biologo.png"></image>
+    </view>
+    <view class="fx" wx:if="{{showpanel}}">
+         <text>专业提供生物仪器、耗材、试剂信息</text>
+    </view>
+  </view>
+    <view class="fx">
+      <input type="text" bindinput="searchInputEvent" placeholder="输入仪器或文章关键词"></input>
+      <icon bindtap="searchClickEvent"  type="search" size="20"/> 
+    </view>
+  </scroll-view>
+
+  <view class='section'>
+    <block wx:for="{{navlist}}">
+       <view class="{{item.id == curTitleId?'cur_nav':'nav_bar'}}" bindtap="chooseTitle" data-id='{{item.id}}'>{{item.title}}</view>
+    </block>
+  </view>
+
+  <view class='ctx_frame' style='height:{{viewHeight}}px' >
+    <scroll-view scroll-y="true" class="textList" style="height:100%">
+       <block wx:if="{{curTitleId > 0 && curTitleId <= 3}}" wx:for="{{shownlist}}"> 
+        <navigator url="../article/index?kind={{item.id}}" class="gtlink">
+          <image src='{{item.img_url}}'></image>
+          <text class= "ad_title">{{item.title}}</text>
+          <text class="ad_date">日期：{{item.date}}</text>
+        </navigator>
+      </block>
+      <block wx:if="{{curTitleId ==0}}" wx:for="{{shownlist}}"> 
+        <navigator url="../details/index?kind={{item.id}}" class="mdlink">
+          <image src='{{item.img_url}}'></image>
+          <text class="ad_title">{{item.title}}</text>
+          <text class="date">上市日期：{{item.date}}</text>
+          <text class="manufacture">供应商：{{item.manufacture}}</text>
+        </navigator>
+      </block>
+      <block wx:if="{{curTitleId == 4}}" wx:for="{{shownlist}}">
+        <navigator url="../article/index?kind={{item.id}}" class="ltlink">
+          <text class= "ep_position">诚聘：{{item.position}}</text>
+          <text class= "ep_company">招聘公司：{{item.company}}</text>
+          <text class="ep_num">招聘人数：{{item.num}} 人</text>
+          <text class ="ep_area">工作地点：{{item.area}}</text>
+          <text class="ep_date">发布日期：{{item.date}}</text>
+        </navigator>
+      </block>
+      <block wx:if="{{curTitleId == 5 }}" wx:for="{{shownlist}}">
+        <navigator url="../article/index?kind={{item.id}}" class="ltlink">
+          <text class= "ad_title">{{item.title}}</text>
+        </navigator>
+      </block>
+    </scroll-view>  
+  </view>

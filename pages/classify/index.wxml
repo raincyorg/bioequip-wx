@@ -1,0 +1,49 @@
+<!--左总导航  -->
+<view class="top_navbar" >
+   <view class="left_tap {{mainCheckId=='c1'?'chooseType':''}}"  bindtap='shiftIt' data-id="c1" data-index='0'>仪器、耗材、试剂</view>
+   <view class="right_tap {{mainCheckId=='c2'?'chooseType':''}}" bindtap='shiftIt' data-id="c2" data-index='1'>生物研发服务</view>
+</view>
+
+  <scroll-view scroll-y="true" class="nav_left" style="height:100%">
+    <block wx:for="{{navLeftItems}}">
+      <view class="{{curId==item.id?'nav_left_items active':'nav_left_items'}}" bindtap="showRightNav" data-index="{{index}}" data-id="{{item.id}}">{{item.class_name}}</view>
+    </block>
+  </scroll-view>
+
+<!--右子导航  -->
+  <view class="nav_right">
+    <view wx:if="{{single}}" class="nav_right_items single" bindtap="findMore">
+      <text>{{thisItem.name}}</text>
+      <text>更多</text>
+    </view>
+    <block wx:if="{{all}}">
+      <view wx:for="{{navRightItems}}" class="nav_right_items" data-index="{{index}}" data-id="{{item.id}}" bindtap="chooseClass">
+        <text>{{item.name}}</text> 
+        <text>+</text> 
+      </view>
+    </block>
+  </view>
+
+<!--产品展示区域  -->
+  <scroll-view scroll-y="true" class="productList" style="height:100%">
+    <!--厂商logo区域 -->
+    <text class='smtitle'>知名厂商</text>
+    <block wx:for="{{hotbrand}}">
+      <navigator url="../manufacture/index?brand={{item.id}}" class='brands'>
+          <image src="{{item.image}}"></image>
+          <view class="brandtitle">{{item.manufacture}}</view>
+      </navigator>
+    </block>
+    <!--产品滚动区  -->
+    <text class='smtitle'>热门产品</text>
+    <block wx:for="{{child_class}}">
+      <navigator url="../details/index?brand={{item.id}}" class="product">
+        <view><image src="{{item.image}}"></image></view>
+        <view class="instroduction">
+          <view class="title">{{item.title}}</view>
+          <view class="manuf">型号：{{item.brand}}</view>
+          <view class="price">厂商：{{item.manufacture}}</view>
+        </view>
+      </navigator>
+    </block>
+  </scroll-view> 

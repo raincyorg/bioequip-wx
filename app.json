@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/classify/index",
+    "pages/my/index",
+    "pages/details/index",
+    "pages/manufacture/index",
+    "pages/article/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "white",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "生物器材网",
+    "navigationBarBackgroundColor": "#42BD56",
+    "backgroundColor": "#F2f2f2",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#ffffff",
+    "selectedColor": "#f9f027",
+    "borderStyle": "white",
+    "backgroundColor": "#42BD56",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/footer-icon-02.png",
+        "selectedIconPath": "images/footer-icon-02-active.png",
+        "text": "搜索"
+      },
+      {
+        "pagePath": "pages/classify/index",
+        "iconPath": "images/footer-icon-05.png",
+        "selectedIconPath": "images/footer-icon-05-active.png",
+        "text": "列表"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "images/footer-icon-03.png",
+        "selectedIconPath": "images/footer-icon-03-active.png",
+        "text": "收藏"
+      }
+    ]
+  },
+  "debug": true
+}
